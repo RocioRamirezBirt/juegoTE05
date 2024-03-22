@@ -1,0 +1,33 @@
+<main class="main">
+    <div class="content">
+        <hr>
+        <div *ngIf="bienvenida">
+            <h2>Ongi Etorri  {{ configuracion?.nombre }} {{configuracion?.apellido}}</h2>
+        </div>
+            
+        <form #formulario = 'ngForm'>
+            <div>
+                <label for="numero">Introduce el Numero a Adivinar</label><br>
+                <input type="number" name="numero" id="numero" [(ngModel)]="numero" required>
+            </div>
+            <br>
+            <div *ngIf="bienvenida">
+                <p>Intentos Restantes: {{configuracion?.intentos}}</p>
+                <p>{{mensaje}}</p>
+            </div>
+            <button type="submit" (click)="adivinar()" >Enviar</button>
+            <hr>
+        </form>
+        
+        <div *ngIf="intentosAgotados"  >
+           <p>"Se han acabado los intentos"</p>
+           <ul>
+                <li *ngFor="let i of numerosIntroducidos">
+                    {{i}}
+                </li>
+           </ul>
+        </div>
+
+
+    </div>
+</main>
